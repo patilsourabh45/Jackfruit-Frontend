@@ -1,12 +1,12 @@
 const axios = require('axios');
-const BACKEND_URL = 'http://localhost:7000/';
+const BACKEND_URL = 'https://JackFruitBackend.patilsourabh45.repl.co';
 
 function UserDataApi(fname, lname, mobilenumber, basic, lta, hra, fa, investments, rent, citytype, medicalpolicy, applicablehra, totaltaxableincome) {
 
-  return axios.post(`${BACKEND_URL}userdata`, {},{
+  return axios.post(`${BACKEND_URL}/userdata`, {},{
     params: {
         FirstName: fname, 
-        lastName: lname,
+        LastName: lname,
         MobileNumber:mobilenumber, 
         Basic:basic,
         LTA:lta, 

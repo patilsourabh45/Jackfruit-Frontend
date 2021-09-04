@@ -1,5 +1,5 @@
 const axios = require('axios');
-const BACKEND_URL = 'http://localhost:7000/';
+const BACKEND_URL = 'https://JackFruitBackend.patilsourabh45.repl.co';
 
 function loginApi(email, password) {
   return axios.get(`${BACKEND_URL}/auth/login`, {

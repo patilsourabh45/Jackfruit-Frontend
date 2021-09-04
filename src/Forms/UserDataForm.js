@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -51,12 +52,13 @@ export default class UserDataForm extends React.Component {
   render() {
     return (
       <>
+      <div class="container">
        <marquee behaviour="scroll" direction="left" scrollamount="10" direction="left" style={{marginBottom:"5px", color:"red"}}>Do you know you can save your tax using our website. Please fill the below form.</marquee>
 
-        <Card className="uicard" variant="outlined">
+        <Card xs={12} sm={6} className="uicard" variant="outlined">
           <CardContent>
             <h5 style={{textAlign:"center"}}>Sample Form</h5>
-            <Grid className="grid" container spacing={3}>
+            <Grid xs={12} className="grid" container spacing={3}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
@@ -216,7 +218,7 @@ export default class UserDataForm extends React.Component {
                   label="Applicable HRA"
                   fullWidth
                   type="number"
-                  value={this.state.ApplicableHRA} 
+                  value={this.state.Basic/2} 
               
                 />
               </Grid>
@@ -250,8 +252,11 @@ export default class UserDataForm extends React.Component {
 
           </CardActions>
         </Card>
+    </div>
 
       </>
     )
   }
 }
+
+

@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import '../css/form.css'
-import bodyphoto from '../images/signupphoto.jpeg'
 
 export class SignupForm extends React.Component {
   constructor(props) {
