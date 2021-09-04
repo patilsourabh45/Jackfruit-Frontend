@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../images/swiggy.png'
 import '../index.css'
 import '../css/form.css'
 

@@ -1,30 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import '../css/form.css'
-import bodyphoto from '../images/signupphoto.jpeg'
-
-
-
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField'
-import { CardHeader } from '@material-ui/core';
 import '../css/ui.css'
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-
 import Grid from '@material-ui/core/Grid';
-
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Icon from '@material-ui/core/Icon';
-
 
 export default class UserDataForm extends React.Component {
   constructor(props) {
@@ -48,15 +30,16 @@ export default class UserDataForm extends React.Component {
   }
 
   evaluate=(e)=>{
-    this.setState({TotalTaxableIncome:parseInt(this.state.Basic) + parseInt(this.state.LTA) + parseInt(this.state.HRA)+ parseInt(this.state.FA)  - parseInt(this.state.Investments)-parseInt(this.state.MedicalPolicy)})
-    console.log("Evaluate")
-    console.log(this.state.Rent)
+    let taxableIncome = parseInt(this.state.Basic) + parseInt(this.state.LTA) + parseInt(this.state.HRA)+ parseInt(this.state.FA)  - parseInt(this.state.Investments)-parseInt(this.state.MedicalPolicy);
+    this.setState({TotalTaxableIncome: taxableIncome})
+
+    console.log(this.state.MedicalPolicy)
 
   }
 
   calculate=(e)=>{
     var option=document.getElementById('option').value;
-    if(option=="Metro City"){
+    if(option==="Metro City"){
       this.setState({ApplicableHRA:parseFloat(this.state.Basic*0.5)})
     }
     else{
@@ -195,7 +178,7 @@ export default class UserDataForm extends React.Component {
                   inputProps={{ min: 0 }}
                   value={this.state.Rent} 
                   onChange={(e) => {this.setState({Rent: e.target.value})
-                  this.evaluate()}}
+                  }}
                 />
               </Grid>
 

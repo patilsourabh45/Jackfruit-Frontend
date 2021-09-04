@@ -1,8 +1,5 @@
 import React from 'react'
 import '../css/form.css'
-import bodyphoto from '../images/signupphoto.jpeg'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import {Link} from 'react-router-dom'
 
 export class LoginForm extends React.Component {

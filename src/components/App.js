@@ -1,8 +1,7 @@
 import React from 'react'
-import Form from '../Forms/UserDataForm'
 import Pagenotfound from './Pagenotfound';
 import Navigation from './Navigation'
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import UserDataPage from '../pages/UserDataPage';
 import Footer from './Footer';
 import LoginPage from '../pages/LoginPage';
