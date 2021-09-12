@@ -17,9 +17,9 @@ function App(){
       </div>
       <div style={{height:"150px"}}></div>
       <Switch>
-      <Route path='/' component={UserDataPage} exact></Route>
+      <Route path='/' component={LoginPage} exact></Route>
       <Route path='/aboutus' component={Aboutus}></Route>
-      <Route path='/login' component={LoginPage}></Route>
+      <Route path='/hra' component={UserDataPage}></Route>
       <Route path='/signup' component={SignupPage}></Route>
       <Route path='*' component={Pagenotfound}></Route>
       

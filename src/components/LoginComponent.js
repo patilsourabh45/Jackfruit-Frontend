@@ -2,9 +2,10 @@ import React from 'react';
 import LoginForm from '../Forms/LoginForm';
 import Loader from './Loader';
 import { loginApi } from '../api/authApi';
-import { createBrowserHistory } from 'history';
+import { withRouter } from 'react-router';
 
-let history = createBrowserHistory();
+
+
 
 const AvailableStates = {
   NEW: 'NEW',
@@ -29,7 +30,7 @@ export class LoginComponent extends React.Component {
       console.log(JSON.stringify(response));
       if (response.status === 200) {
         this.setState({ state: AvailableStates.SUCCESS });
-        history.push('/aboutus')
+        this.props.history.push('/hra')
       
       }
       else {
@@ -75,4 +76,4 @@ export class LoginComponent extends React.Component {
   }
 }
 
-export default LoginComponent;
+export default withRouter(LoginComponent);

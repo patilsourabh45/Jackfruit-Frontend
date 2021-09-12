@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
+import Select from '@material-ui/core/Select';
 import '../css/ui.css'
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
@@ -31,20 +32,23 @@ export default class UserDataForm extends React.Component {
   }
 
   evaluate=(e)=>{
-    let taxableIncome = parseInt(this.state.Basic) + parseInt(this.state.LTA) + parseInt(this.state.HRA)+ parseInt(this.state.FA)  - parseInt(this.state.Investments)-parseInt(this.state.MedicalPolicy);
+    this.calculateApplicableHRA();
+    console.log(`this.state = ${JSON.stringify(this.state)}`);
+    let taxableIncome = parseInt(this.state.Basic) + parseInt(this.state.LTA) + parseInt(this.state.HRA)+ parseInt(this.state.FA)  - parseInt(this.state.ApplicableHRA)- parseInt(this.state.Investments)-parseInt(this.state.MedicalPolicy);
     this.setState({TotalTaxableIncome: taxableIncome})
 
     console.log(this.state.MedicalPolicy)
 
   }
 
-  calculate=(e)=>{
-    var option=document.getElementById('option').value;
-    if(option==="Metro City"){
-      this.setState({ApplicableHRA:parseFloat(this.state.Basic*0.5)})
+  calculateApplicableHRA=(e)=>{
+    // var option=document.getElementById('option').value;
+    console.log('City type = ' + this.state.CityType)
+    if(this.state.CityType==="Metro City"){
+      this.setState({ApplicableHRA:parseInt(this.state.Basic)*0.5})
     }
     else{
-      this.setState({ApplicableHRA:parseFloat(this.state.Basic*0.4)})
+      this.setState({ApplicableHRA:parseInt(this.state.Basic)*0.4})
     }
   }
 
@@ -108,8 +112,8 @@ export default class UserDataForm extends React.Component {
                   type="number"
                   inputProps={{ min: 0 }}
                   value={this.state.Basic} 
-                  onChange={(e) => {this.setState({Basic: e.target.value})
-                  this.evaluate();}}
+                  onChange={(e) => {this.setState({Basic: e.target.value},this.evaluate())
+                  }}
                 />
               </Grid>
 
@@ -122,8 +126,8 @@ export default class UserDataForm extends React.Component {
                   type="number"
                   inputProps={{ min: 0 }}
                   value={this.state.LTA} 
-                  onChange={(e) =>{ this.setState({LTA: e.target.value})
-                  this.evaluate();}}
+                  onChange={(e) =>{ this.setState({LTA: e.target.value},this.evaluate())
+                     }}
                 />
               </Grid>
 
@@ -136,8 +140,8 @@ export default class UserDataForm extends React.Component {
                   type="number"
                   inputProps={{ min: 0 }}
                   value={this.state.HRA} 
-                  onChange={(e) => {this.setState({HRA: e.target.value})
-                  this.evaluate();}}
+                  onChange={(e) => {this.setState({HRA: e.target.value}, () => this.evaluate())
+                  }}
                 />
 
               </Grid>
@@ -151,8 +155,8 @@ export default class UserDataForm extends React.Component {
                   type="number"
                   inputProps={{ min: 0 }}
                   value={this.state.FA} 
-                  onChange={(e) =>{this.setState({FA: e.target.value})
-                  this.evaluate();}}
+                  onChange={(e) =>{this.setState({FA: e.target.value}, () => this.evaluate())
+                 }}
                 />
               </Grid>
 
@@ -165,8 +169,8 @@ export default class UserDataForm extends React.Component {
                   type="number"
                   inputProps={{ min: 0 }}
                   value={this.state.Investments} 
-                  onChange={(e) => {this.setState({Investments: e.target.value})
-                  this.evaluate();}}
+                  onChange={(e) => {this.setState({Investments: e.target.value}, () => this.evaluate())
+                  }}
                 />
               </Grid>
 
@@ -185,15 +189,17 @@ export default class UserDataForm extends React.Component {
               </Grid>
 
               <Grid item xs={6}>
-                <TextField id="select" label="City Type" 
-                displayEmpty
+                <Select id="select" label="City Type" 
+                
                 value={this.state.CityType} 
-                onChange={(e) => this.setState({CityType: e.target.value})
-              }
-                select>
+                onChange={(e) => {
+                  this.setState({CityType: e.target.value}, () => this.calculateApplicableHRA());
+                  // this.calculateApplicableHRA();
+              }}
+              >
                   <MenuItem value="Metro City" >Metro City</MenuItem>
                   <MenuItem value="Non Metro City">Non Metro City</MenuItem>
-                </TextField>
+                </ Select>
               </Grid>
 
               <Grid item xs={12}>
@@ -206,8 +212,8 @@ export default class UserDataForm extends React.Component {
                   inputProps={{ min: 0 }}
                   value={this.state.MedicalPolicy} 
                   onChange={(e) => { 
-                    this.setState({MedicalPolicy: e.target.value});
-                    this.evaluate();
+                    this.setState({MedicalPolicy: e.target.value}, () => this.evaluate());
+                    // this.evaluate();
                     }}
                 />
               </Grid>
@@ -218,7 +224,7 @@ export default class UserDataForm extends React.Component {
                   label="Applicable HRA"
                   fullWidth
                   type="number"
-                  value={this.state.Basic/2} 
+                  value={this.state.ApplicableHRA} 
               
                 />
               </Grid>
