@@ -17,7 +17,6 @@ function Navigation(props) {
 
             <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
             <li className="nav-item" ><Link className="nav-link" to="/aboutus">About Us</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/hra">Login</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/signup">Sign up</Link></li>
           
                  

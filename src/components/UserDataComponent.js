@@ -2,6 +2,7 @@ import React from 'react';
 import UserDataForm from '../Forms/UserDataForm';
 import Loader from '../components/Loader';
 import { UserDataApi } from '../api/UserDataApi';
+import { Link } from 'react-router-dom'
 import { createBrowserHistory } from 'history';
 
 let history = createBrowserHistory();
@@ -22,7 +23,7 @@ export class UserDataComponent extends React.Component {
   }
 
   createUserData(fname, lname, mobilenumber, basic, lta, hra, fa, investments, rent, citytype, medicalpolicy, applicablehra, totaltaxableincome) {
-    
+
     this.setState({ state: AvailableStates.LOADING });
     UserDataApi(fname, lname, mobilenumber, basic, lta, hra, fa, investments, rent, citytype, medicalpolicy, applicablehra, totaltaxableincome)
       .then(response => {
@@ -56,13 +57,21 @@ export class UserDataComponent extends React.Component {
         }
         {
           state === AvailableStates.ERROR && (
-            <div> Error occurred </div>
+            <div className="center">
+              <div>Error : Invalid data</div>
+              <br></br>
+              <button type="button" class="btn btn-primary"><Link style={{ textDecoration: 'none', color: "white" }} to="./">Login</Link> </button>
+            </div>
           )
         }
         {
           state === AvailableStates.SUCCESS && (
             <>
-              <div> UserData Created successfull! </div>
+              <div className="center">
+                <div> Data sent successfully! </div>
+                <br></br>
+                <button type="button" class="btn btn-primary"><Link style={{ textDecoration: 'none', color: "black" }} to="./">Login Again</Link> </button>
+              </div>
 
             </>
           )

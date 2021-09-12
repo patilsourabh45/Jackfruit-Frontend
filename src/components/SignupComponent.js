@@ -1,9 +1,10 @@
 import React from 'react';
+import '../css/form.css'
 import SignupForm from '../Forms/SignupForm';
 import Loader from '../components/Loader';
 import { signupApi } from '../api/signupApi';
 import { createBrowserHistory } from 'history';
-
+import { Link } from 'react-router-dom'
 let history = createBrowserHistory();
 
 const AvailableStates = {
@@ -56,14 +57,23 @@ export class SignupComponent extends React.Component {
         }
         {
           state === AvailableStates.ERROR && (
-            <div> Error occurred </div>
+            <>
+              <div className="center">
+                <div> Error occurred </div>
+                <br></br>
+                <button type="button" class="btn btn-primary"><Link style={{ textDecoration: 'none', color: "white" }} to="./signup">Signup</Link> </button>
+              </div>
+            </>
           )
         }
         {
           state === AvailableStates.SUCCESS && (
             <>
-              <div> Signup successfull! </div>
-
+              <div className="center">
+                <div> Signup successfull! </div>
+                <br></br>
+                <button type="button" class="btn btn-primary"><Link style={{ textDecoration: 'none', color: "black" }} to="./">Login</Link> </button>
+              </div>
             </>
           )
         }

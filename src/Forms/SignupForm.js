@@ -42,7 +42,7 @@ export class SignupForm extends React.Component {
                     
                     <button style={{marginBottom:'15px'}}type="submit" onClick={() => this.props.signup(this.state.name, 
                     this.state.email, this.state.phonenumber, this.state.password)} className="btn btn-primary">Signup</button>
-                     <span>Already have an account ?<Link style={{textDecoration:'none',fontWeight:700}}to="./login"> Login</Link></span>
+                     <span>Already have an account ?<Link style={{textDecoration:'none',fontWeight:700}}to="./"> Login</Link></span>
                 </form>
             </div>
 
