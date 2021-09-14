@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import '../css/ui.css'
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
+import Container from 'react-bootstrap/Container'
 
 
 
@@ -58,11 +59,8 @@ export default class UserDataForm extends React.Component {
   render() {
     return (
       <>
-      <div className="container">
+      <Container >
        <marquee behaviour="scroll" direction="left" scrollamount="10" direction="left" style={{marginBottom:"5px", color:"red"}}>Do you know you can save your tax using our website. Please fill the below form.</marquee>
-
-        <Card xs={12} sm={6} className="uicard" variant="outlined">
-          <CardContent>
             <h5 style={{textAlign:"center"}}>Sample Form</h5>
             <Grid xs={12} className="grid" container spacing={3}>
               <Grid item xs={12} sm={6}>
@@ -255,12 +253,7 @@ export default class UserDataForm extends React.Component {
 
 
             </Grid>
-          </CardContent>
-          <CardActions>
-
-          </CardActions>
-        </Card>
-    </div>
+    </Container>
 
       </>
     )

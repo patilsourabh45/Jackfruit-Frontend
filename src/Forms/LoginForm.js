@@ -19,7 +19,7 @@ export class LoginForm extends React.Component {
           <form className="col-md-8 col-sm-4 col-sx-12">
             <div className="mb-3">
               <label for="exampleInputEmail1" className="form-label">Email</label>
-              <input type="email" placeholder="Enter Email" id="exampleInputEmail1" aria-describedby="emailHelp" value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} className="form-control"  />
+              <input type="email" placeholder="Enter Email" id="exampleInputEmail1" aria-describedby="emailHelp" value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} className="form-control" required />
 
             </div>
             <div className="mb-3">
